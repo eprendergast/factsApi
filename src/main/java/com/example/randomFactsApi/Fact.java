@@ -4,14 +4,22 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Column;
 
 @Data // Lombok annotation to create all the getters, setters, equals, hash, and toString methods, based on the fields.
 @Entity // JPA annotation to make this object ready for storage in a JPA-based data store.
 class Fact {
 
-    private @Id String id;
+    @Id 
+    private String id;
+
+    @Column(length = 1000)
     private String text;
+
+    @Column
     private String source_url;
+
+    @Column
     private String language;
 
     Fact(){}

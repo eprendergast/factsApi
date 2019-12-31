@@ -26,9 +26,13 @@ public class RandomFactsApiApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate, FactRepository repository) throws Exception {
 		return args -> {
-			Fact fact = restTemplate.getForObject("https://uselessfacts.jsph.pl/random.json?language=en", Fact.class);
-			repository.save(fact);
-			log.info(fact.toString());
+
+			for(int i = 0; i < 10; i ++){
+				Fact fact = restTemplate.getForObject("https://uselessfacts.jsph.pl/random.json?language=en", Fact.class);
+				repository.save(fact);
+				log.info(fact.toString());
+			}
+
 		};
 	}
 
