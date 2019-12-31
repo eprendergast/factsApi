@@ -11,15 +11,15 @@ class Fact {
 
     private @Id String id;
     private String text;
-    private String url;
+    private String source_url;
     private String language;
 
     Fact(){}
 
-    Fact(String id, String text, String url, String language){
+    Fact(String id, String text, String source_url, String language){
         this.id = id;
         this.text = text;
-        this.url = url;
+        this.source_url = source_url;
         this.language = language;
     }
 }
