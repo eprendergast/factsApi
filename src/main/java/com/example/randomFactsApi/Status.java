@@ -11,7 +11,7 @@ class Status {
 
     Status(FactRepository repository){
         Long totalFacts = repository.count();
-        this.status = totalFacts > 0 ? "COMPLETED" : "ERROR";
+        this.status = totalFacts == 1000 ? "COMPLETED" : "LOADING";
         this.total = totalFacts; 
         this.unique = repository.countUnique();
     }

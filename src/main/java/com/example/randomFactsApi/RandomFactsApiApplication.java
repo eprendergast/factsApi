@@ -12,6 +12,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 @SpringBootApplication
 @Slf4j
 public class RandomFactsApiApplication {
+
+	String URL = "https://uselessfacts.jsph.pl/random.json?language=en";
+
 	public static void main(String[] args) {
 		SpringApplication.run(RandomFactsApiApplication.class, args);
 	}
@@ -25,8 +28,8 @@ public class RandomFactsApiApplication {
 	public CommandLineRunner run(RestTemplate restTemplate, FactRepository repository) throws Exception {
 		return args -> {
 
-			for(int i = 0; i < 100; i ++){
-				Fact fact = restTemplate.getForObject("https://uselessfacts.jsph.pl/random.json?language=en", Fact.class);
+			for(int i = 0; i < 1000; i ++){
+				Fact fact = restTemplate.getForObject(URL, Fact.class);
 				repository.save(fact);
 				log.info(fact.toString());
 			}
