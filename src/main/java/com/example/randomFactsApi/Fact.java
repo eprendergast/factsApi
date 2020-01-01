@@ -6,11 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Column;
 
-@Data // Lombok annotation to create all the getters, setters, equals, hash, and toString methods, based on the fields.
-@Entity // JPA annotation to make this object ready for storage in a JPA-based data store.
+@Data // Lombok annotation to create all the getters, setters, equals, hash, and toString methods.
+@Entity // JPA annotation to make this object ready for storage in a JPA-based store.
 class Fact {
 
-    @Id 
+    @Id
     private String id;
 
     @Column(length = 1000)
@@ -22,12 +22,14 @@ class Fact {
     @Column
     private String language;
 
-    Fact(){}
+    Fact() {
+    }
 
-    Fact(String id, String text, String source_url, String language){
+    Fact(String id, String text, String source_url, String language) {
         this.id = id;
         this.text = text;
         this.source_url = source_url;
         this.language = language;
     }
+
 }

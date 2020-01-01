@@ -2,17 +2,17 @@ package com.example.randomFactsApi;
 
 import lombok.Data;
 
-@Data // Lombok annotation to create all the getters, setters, equals, hash, and toString methods, based on the fields.
-// @Entity // JPA annotation to make this object ready for storage in a JPA-based data store.
+@Data // Lombok annotation to create all the getters, setters, equals, hash, and toString methods.
 class Status {
 
     private String status;
-    private Integer total;
-    private Integer unique;
+    private Long total;
+    private Long unique;
 
-    Status(){
-        this.status = "COMPLETED";
-        this.total = 1000; 
-        this.unique = 256;
+    Status(FactRepository repository){
+        Long totalFacts = repository.count();
+        this.status = totalFacts > 0 ? "COMPLETED" : "ERROR";
+        this.total = totalFacts; 
+        this.unique = repository.countUnique();
     }
 }
